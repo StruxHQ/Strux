@@ -32,11 +32,27 @@ idf.py build
 idf.py -p /dev/ttyUSB0 flash monitor
 ```
 
+## Project structure
+
+Strux separates the reusable foundation, your application, and the hardware. That keeps application code independent of a particular ESP32 board and lets you improve the shared infrastructure without mixing in product-specific logic.
+
+```text
+main/
+├── strux/              Framework services (Wi-Fi, OTA, settings, commands)
+├── app/                Your product logic and managers
+│   └── LedManager/     Example application manager
+└── hardware/
+    ├── boards/         Board-specific configuration and hardware instances
+    ├── drivers/        Reusable peripheral drivers
+    └── interfaces/     Hardware roles used by the application
+frontend/               React web interface
+```
+
+The board layer owns the hardware. The application uses that hardware and registers its commands and settings with Strux; the framework itself stays independent of your application. Each layer has its own context responsible for its managers and initialization.
+
 ## Building your own application
 
-Your code belongs in `main/app/`; board definitions and drivers live in `main/hardware/`; the web interface is in `frontend/`. The reusable Strux foundation lives in `main/strux/`.
-
-The included `main/app/LedManager/` is a small working example to start from.
+Start with `main/app/LedManager/` as an example, add your own managers in `main/app/`, and customize `frontend/`. To support another board, add a folder under `main/hardware/boards/` with its pins, drivers, and build configuration. Most application features don't require changes to `main/strux/`.
 
 ## Example project
 
