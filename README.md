@@ -18,12 +18,25 @@ It's not a framework that forces you into rigid patterns. It's a well-organized 
 
 
 ## Tech Stack
-Layer	Stack
-Firmware	C++, ESP-IDF v6.0, FreeRTOS
-Frontend	React 19, TypeScript, Vite, Tailwind CSS, shadcn/ui
-Target	Any ESP32 board that declares itself — esp32_devkit and esp32c3_supermini today, both 4 MB; flash size and partition layout are the board's, not the project's
-CI/CD	GitHub Actions — builds firmware + frontend, publishes releases
 
+| Layer | Stack |
+| --- | --- |
+| Firmware | C++, ESP-IDF v6.0, FreeRTOS |
+| Frontend | React 19, TypeScript, Vite, Tailwind CSS, shadcn/ui |
+| Target | ESP32 DevKit (`esp32_devkit`) and ESP32-C3 SuperMini (`esp32c3_supermini`), both 4 MB flash; other boards can be added |
+| CI/CD | GitHub Actions — firmware and frontend builds, releases |
+
+## Getting started
+
+To try Strux, download `Strux-factory.bin` from [Releases](https://github.com/StruxHQ/Strux/releases) and flash it at offset `0x0` with [ESP Web Flasher](https://espressif.github.io/esptool-js/) in Chrome or Edge. Connect to `Strux-AP` to configure Wi-Fi.
+
+To build from source, install [ESP-IDF v6.0+](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/), [Node.js 22+](https://nodejs.org/) and [pnpm](https://pnpm.io/), or use the included dev container.
+
+```bash
+idf.py set-target esp32
+idf.py build
+idf.py -p /dev/ttyUSB0 flash monitor
+```
 
 ## Project structure
 
