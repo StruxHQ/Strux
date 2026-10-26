@@ -66,4 +66,5 @@ Start with `main/app/LedManager/` as an example, add your own managers in `main/
 
 ## License
 
-No license is currently specified. All rights are reserved unless a license is added.
+Licensed under the [MIT License](LICENSE).
+
