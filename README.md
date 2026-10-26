@@ -2,9 +2,9 @@
 
 *Start structured. Make it your own.*
 
-**An ESP32 application template with Wi-Fi, a web interface, OTA updates, and room for your own code.**
+Strux is a flexible foundation for building embedded applications on ESP32. It gives you a clean, modular starting point with WiFi, a web UI, OTA updates, and the infrastructure to grow your project without fighting your own codebase.
 
-Strux gives you a working starting point for standalone ESP32 applications. Copy the project, connect your hardware, and build your application without first implementing networking, settings, or a web interface.
+It's not a framework that forces you into rigid patterns. It's a well-organized starting point that you copy, rename, and shape into whatever you're building.
 
 <img width="1096" height="591" alt="Strux web interface" src="https://github.com/user-attachments/assets/cc282e06-f84b-497d-8e5a-3e04add95bac" />
 
@@ -16,21 +16,14 @@ Strux gives you a working starting point for standalone ESP32 applications. Copy
 - Live logs, settings, and discoverable commands
 - Optional remote access and MCP integration via [Strux Relay](https://github.com/StruxHQ/strux-relay)
 
-Strux is intended for products with their own firmware logic and interface, rather than Home Assistant-focused devices.
 
-## Getting started
+## Tech Stack
+Layer	Stack
+Firmware	C++, ESP-IDF v6.0, FreeRTOS
+Frontend	React 19, TypeScript, Vite, Tailwind CSS, shadcn/ui
+Target	Any ESP32 board that declares itself — esp32_devkit and esp32c3_supermini today, both 4 MB; flash size and partition layout are the board's, not the project's
+CI/CD	GitHub Actions — builds firmware + frontend, publishes releases
 
-**Supported boards:** ESP32 DevKit and ESP32-C3 SuperMini (4 MB flash).
-
-To try it without a development environment, download `Strux-factory.bin` from [Releases](https://github.com/StruxHQ/Strux/releases) and flash it at offset `0x0` using [ESP Web Flasher](https://espressif.github.io/esptool-js/). Connect to `Strux-AP` to configure Wi-Fi.
-
-To build from source, install [ESP-IDF v6.0+](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/) and [pnpm](https://pnpm.io/) with [Node.js 22+](https://nodejs.org/), or use the included dev container.
-
-```bash
-idf.py set-target esp32
-idf.py build
-idf.py -p /dev/ttyUSB0 flash monitor
-```
 
 ## Project structure
 
